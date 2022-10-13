@@ -1,0 +1,63 @@
+﻿@model finalcrud.Models.Employee
+
+@using (Ajax.BeginForm("Crud", "Employee", new AjaxOptions
+{
+    OnBegin = "OnBegin",
+    OnFailure = "OnFailure",
+    OnComplete = "OnComplete ",
+    HttpMethod = "POST"
+},
+    new { enctype = "multipart/form-data" }
+))
+{
+    @Html.HiddenFor(m => m.EmpID)
+    <div>
+        @Html.Label("EmployeeName")<br />
+        @Html.EditorFor(m => m.EmpName)
+    </div>
+    <br />
+
+    <div>
+        @Html.Label("Email")<br />
+
+        @Html.EditorFor(m => m.Email)
+    </div>
+    <br />
+
+
+    <div>
+        @Html.Label("Gender")<br />
+        Male
+        @Html.RadioButtonFor(m => m.Gender, "Male")
+        Female
+        @Html.RadioButtonFor(m => m.Gender, "Female")
+    </div>
+    <br />
+
+    <div>
+        @Html.Label("Join Date")<br />
+        @Html.EditorFor(m => m.Joindate, "date")
+    </div>
+    <br />
+
+    <div>
+        @Html.Label("Salary")<br />
+        @Html.EditorFor(m => m.Salary)
+    </div>
+    <br />
+
+    <div>
+        @Html.Label("Department Name")<br />
+        @Html.DropDownListFor(m => m.DeptID, new SelectList(ViewBag.Key, "DeptID", "DeptName", "Select Department Name"))
+    </div>
+    <br />
+    <div>
+        @Html.Label("Photo")<br />
+        <input type="file" name="img"/>
+    </div>
+    <br />
+    <div>
+        <input type="submit" name="Save"/>
+    </div>
+
+}

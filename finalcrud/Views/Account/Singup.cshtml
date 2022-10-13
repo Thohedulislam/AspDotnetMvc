@@ -1,0 +1,26 @@
+﻿@model finalcrud.Models.User
+@{
+    ViewBag.Title = "Singup";
+}
+
+<h2>Singup</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.Label("UserName")<br />
+        @Html.EditorFor(m => m.Username)
+      
+    </div>
+    <br />
+    <div>
+        @Html.Label("Password")<br />
+        @Html.EditorFor(m => m.Password)
+      
+    </div>
+    <br />
+    <div>
+        <input type="submit" value="Save" />
+    </div><br/>
+    @Html.ActionLink("Back To Login", "Login");
+}
